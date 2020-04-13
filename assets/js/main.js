@@ -19,3 +19,14 @@ languageOptions.addEventListener('mouseout', function() {
     document.querySelector('.header-navbar__language-select').style.display = "none";
     document.querySelector('.select-down').classList.replace('fa-caret-up', 'fa-caret-down');
 })
+
+// welcome popup
+languageOptions.addEventListener('click', function() {
+    document.querySelector('.modal-container').classList.toggle('hidden');
+    document.querySelector('.welcome-wrap').classList.toggle('hidden');
+});
+
+document.querySelector('.welcome-close-icon').addEventListener('click', function() {
+    document.querySelector('.modal-container').classList.toggle('hidden');
+    document.querySelector('.welcome-wrap').classList.toggle('hidden');
+});

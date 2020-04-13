@@ -66,7 +66,7 @@
 
 .header-navbar__item-link {
     display: block;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: #222222;
     padding: 28px 0;
@@ -95,6 +95,7 @@
 
 .header-navbar__auth-link,
 .header-navbar__language-text {
+    font-size: 1.2rem;
     color: #666666;
 }
 
@@ -110,6 +111,7 @@
 }
 
 .navbar-item__info-heading a{
+    font-size: 1.5rem;
     display: block;
     color: #222222;
     margin-bottom: 16px;
@@ -136,11 +138,11 @@
 }
 
 .navbar-item__info-item {
-    margin: 6px 0;
+    margin: 8px 0;
 }
 
 .navbar-item__info-item a {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     color: #787878;
     line-height: 1.6rem;
     text-transform: uppercase;
@@ -193,7 +195,7 @@
     display: block;
     color: #222222;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .icon-new--in-info {
@@ -216,7 +218,7 @@
     position: absolute;
     display: none;
     background-color: white;
-    top: 45px;
+    top: 42px;
     right: 44px;
 }
 
@@ -237,7 +239,7 @@
     width: 350px;
     height: 36px;
     padding-left: 20px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #a1a1a1;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
@@ -263,6 +265,7 @@
 
 .header-navbar__language {
     position: relative;
+    cursor: pointer;
 }
 
 .select-down {
@@ -302,12 +305,126 @@
 }
 
 /* Modal */
+
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    position: relative;
+}
+
 .modal-container {
-    display: none;
     position: fixed;
+    z-index: 9;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.8);
+    animation: show 0.1s ease;
+}
+
+/* Welcome Pop */
+
+.welcome-wrap {
+    position: relative;
+    width: 828px;
+    height: 552px;
+    background: url('../../images/BG_welcomePop.jpg') center center no-repeat;
+    margin: 0 auto;
+    margin-top: 55px;
+    z-index: 10;
+    animation: show 0.2s ease;
+}
+
+.welcome-left {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-45%, -50%);
+    width: 236px;
+    height: 112px;
+    background: url('../../images/welcomeLogo_2018.png') center center no-repeat;
+}
+
+.welcome-right {
+    position: absolute;
+    top: 50%;
+    right: 25%;
+    transform: translate(40%, -50%);
+    background-color: white;
+    width: 334px;
+    height: 362px;
+}
+
+.welcome-form {
+    padding: 30px;
+}
+
+.welcome-heading-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222222;
+    padding-bottom: 16px;
+}
+
+.welcome-heading {
+    font-size: 20px;
+    color: #222222;
+    line-height: 1.2;
+}
+
+.welcome-close-icon {
+    font-size: 3rem;
+    font-weight: 100;
+    color: #727272;
+    cursor: pointer;
+}
+
+.welcome-region {
+    color: #222222;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin: 24px 0 8px;
+}
+
+.welcome-select {
+    width: 98%;
+    color: #666666;
+    font-size: 1.4rem;
+    padding: 8px 4px;
+    border: none;
+    border-bottom: 1px solid #AAAAAA;
+}
+
+.welcome-language {
+    font-size: 1.2rem;
+    margin: 24px 0 8px;
+}
+
+.welcome-language__select {
+    font-size: 1.2rem;
+}
+
+.welcome-language__select option {
+    font-size: 1.4rem;
+}
+
+.welcome-submit-wrap {
+    width: 100%;
+    text-align: center;
+}
+
+.welcome-submit {
+    margin-top: 40px;
+    width: 150px;
+    border: none;
 }
