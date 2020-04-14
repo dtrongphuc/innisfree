@@ -40,22 +40,32 @@
 
 .slide-footer {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-evenly;
     height: 125px;
-    padding-top: 30px;
 }
 
-.slide-left {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-evenly; */
-    width: 60%;
+.slide-footer__tit{
+    display: flex;
+    justify-content: space-between;
 }
 
 .slide-heading {
     font-family: 'Noto Sans', sans-serif;
     font-size: 3.2rem;
     font-weight: normal;
+}
+
+.slide-footer__tit-right {
+    display: flex;
+    justify-self: flex-end;
+    align-items: center;
+}
+
+.slide-tag {
+    position: relative;
+    width: 125px;
+    top: 10px;
 }
 
 .slide-description,
@@ -66,24 +76,45 @@
     font-weight: lighter;
 }
 
-.slide-right {
-    display: flex;
-    justify-content: space-evenly;
-    width: 40%;
-}
-
 .slide-count {
-
+    margin-right: 24px;
 }
 
+.slide-current,
 .slide-limit {
-
+    font-size: 1.4rem;
 }
 
 .slide-loading {
-
+    position: relative;
+    width: 100px;
+    height: 2px;
+    background-color: #dddddd;
+    border-radius: 4px;
+    margin-right: 24px;
 }
 
-.slide-info {
-    width: 30%;
+.slide-loading::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #000;
+    border-radius: 4px;
+    animation-name: loadingBar;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.slide-description {
+    line-height: 2.2rem;
+}
+
+@keyframes loadingBar {
+    0% {
+        width: 0%;
+    } 100% {
+        width: 100%;
+    }
 }
