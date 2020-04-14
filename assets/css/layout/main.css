@@ -1,0 +1,89 @@
+/* App Container */
+.container {
+    padding-top: 90px;
+    background-color: #fff;
+}
+
+/* Banner */
+.banner {
+    height: calc(100vh - 90px);
+}
+
+.slideshow-container {
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+}
+
+.fade {
+
+}
+
+.slide-link {
+    display: block;
+    max-width: 1349px;
+    height: calc(100% - 170px);
+}
+
+.slide-img {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../images/VN_R_66_L012.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide-footer {
+    display: flex;
+    justify-content: space-between;
+    height: 125px;
+    padding-top: 30px;
+}
+
+.slide-left {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; */
+    width: 60%;
+}
+
+.slide-heading {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 3.2rem;
+    font-weight: normal;
+}
+
+.slide-description,
+.slide-current,
+.slide-limit {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+
+.slide-right {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+}
+
+.slide-count {
+
+}
+
+.slide-limit {
+
+}
+
+.slide-loading {
+
+}
+
+.slide-info {
+    width: 30%;
+}
