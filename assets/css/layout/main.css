@@ -10,29 +10,44 @@
 }
 
 .slideshow-container {
+    position: relative;
     width: 100%;
     height: 100%;
 }
 
 .slide {
+    position: absolute;
     width: 100%;
     height: 100%;
 }
 
 .fade {
+    animation: fadeInOut linear 500ms;
+    transition: all 500ms ease-in-out;
+}
 
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    96% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 .slide-link {
     display: block;
-    max-width: 1349px;
+    margin: 0 auto;
+    width: 100%;
     height: calc(100% - 170px);
 }
 
-.slide-img {
+.slide-bg {
     width: 100%;
     height: 100%;
-    background-image: url('../../images/VN_R_66_L012.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -40,6 +55,7 @@
 
 .slide-footer {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-evenly;
     height: 125px;
@@ -54,18 +70,29 @@
     font-family: 'Noto Sans', sans-serif;
     font-size: 3.2rem;
     font-weight: normal;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    width: 70%;
+    line-height: 4rem;
 }
 
 .slide-footer__tit-right {
     display: flex;
     justify-self: flex-end;
     align-items: center;
+    margin-right: 150px;
 }
 
 .slide-tag {
-    position: relative;
-    width: 125px;
-    top: 10px;
+    position: absolute;
+    width: 150px;
+    top: 30px;
+    right: 0;
 }
 
 .slide-description,
@@ -102,7 +129,7 @@
     background-color: #000;
     border-radius: 4px;
     animation-name: loadingBar;
-    animation-duration: 5s;
+    animation-duration: 6s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
 }
@@ -114,7 +141,13 @@
 @keyframes loadingBar {
     0% {
         width: 0%;
-    } 100% {
+    }
+    5% {
+        width: 0%;
+    } 95% {
+        width: 100%;
+    }
+    100% {
         width: 100%;
     }
 }

@@ -30,3 +30,23 @@ document.querySelector('.welcome-close-icon').addEventListener('click', function
     document.querySelector('.modal-container').classList.toggle('hidden');
     document.querySelector('.welcome-wrap').classList.toggle('hidden');
 });
+
+
+var slides = document.querySelectorAll('.slide');
+var slideIndex;
+
+function showSlides() {
+    slides.forEach(slide => {
+        slide.style.zIndex = -1;
+        slide.style.opacity = 0;
+    });
+    slides[slideIndex].style.opacity = 1;
+    slides[slideIndex].style.zIndex = 999;
+    slideIndex++;
+    if(slideIndex === slides.length) {
+        slideIndex = 0;
+    }
+    setTimeout(showSlides, 6000);
+}
+
+showSlides(slideIndex = 0);

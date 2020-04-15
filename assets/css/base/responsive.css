@@ -1,0 +1,5 @@
+@media (min-width: 1641px) {
+    .grid.wide {
+        max-width: 1420px;
+    }
+}
