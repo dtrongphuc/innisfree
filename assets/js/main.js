@@ -96,3 +96,18 @@ document.querySelectorAll('.slide-icon').forEach(icon => {
         });
     });
 });
+
+// innistar
+
+var wideWidth = document.querySelector('.grid.wide').offsetWidth;
+
+var getWidth = wideWidth/5;
+var listBox = document.querySelectorAll('.star-box');
+function setWidth() {
+    for(let i = 0 ; i < listBox.length ; ++i) {
+        listBox[i].style.width = `${getWidth}px`;
+        listBox[i].style.height = `${getWidth}px`;
+    }
+}
+
+setWidth();
