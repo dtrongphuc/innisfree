@@ -1,6 +1,6 @@
 /* App Container */
 .container {
-    padding-top: 90px;
+    padding-top: 80px;
     background-color: #fff;
 }
 
@@ -226,7 +226,8 @@
 /* Innistar */
 
 .innistar {
-
+    padding-top: 200px;
+    background-color: #fff;
 }
 
 .innistar-head {
@@ -234,7 +235,7 @@
 }
 
 .innis__tit {
-
+    
 }
 
 .innistar-title {
@@ -255,9 +256,8 @@
 
 }
 
-
 .star-box {
-
+    font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif;
 }
 
 .star-bg {
@@ -265,7 +265,6 @@
 }
 
 .star-header {
-
 }
 
 .instagram-icon {
@@ -289,5 +288,5 @@
 }
 
 .star-body-text {
-    
+
 }
