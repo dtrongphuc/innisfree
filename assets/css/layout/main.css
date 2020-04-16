@@ -279,27 +279,32 @@
 
 .innistar-main {
     padding-top: 20px;
+    text-align: center;
 }
 
-.star-box {
+.innistar-box {
     position: relative;
-    padding: 2px;
+    margin-top: 2px;
     font-family: 'Nanum Gothic', 'Noto Sans KR', sans-serif;
 }
 
-.star-box:hover > .star-overlay{
-    visibility: visible;
+.innistar-box:hover > .innistar-overlay{
     opacity: 1;
 }
 
-.star-bg {
-    width: 100%;
-    height: 100%;
-    background: transparent url("https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/93244090_226708491914223_436196715629151101_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_cat=103&_nc_ohc=5nEAy9yjHI4AX-C6us9&oh=da9071917da47ade91fd1047b01fe4eb&oe=5EC11582") center center no-repeat;
-    background-size: cover;
+.innistar-bg {
+    padding-top: 100%;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-.star-header {
+.innistar-video {
+    width: 100%;
+}
+
+.innistar-header {
     position: absolute;
     display: flex;
     align-items: center;
@@ -317,14 +322,13 @@
     font-weight: 100;
 }
 
-.star-header__time {
+.innistar-header__time {
     padding-top: 4px;
     font-size: 1.3rem;
 }
 
-.star-overlay {
+.innistar-overlay {
     opacity: 0;
-    visibility: hidden;
     position: absolute;
     top: 0;
     right: 0;
@@ -332,11 +336,11 @@
     left: 0;
     background-color: rgba(2, 65, 55, 0.8);
     cursor: pointer;
-    transition: opacity ease-in-out 300ms;
+    transition: opacity ease-in-out 400ms;
     will-change: opacity;
 }
 
-.star-header--overlay {
+.innistar-header--overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -345,25 +349,26 @@
     padding: 0 16px;
 }
 
-.star-body {
+.innistar-body {
     position: absolute;
     height: calc(100% - 60px);
     padding: 4px 0 0 8px;
+    left: 0;
     right: 8px;
     bottom: 6px;
     overflow-y: auto;
 }
 
-.star-body::-webkit-scrollbar {
+.innistar-body::-webkit-scrollbar {
     width: 3px;
     background-color: transparent;
 }
 
-.star-body::-webkit-scrollbar-thumb {
+.innistar-body::-webkit-scrollbar-thumb {
     background-color: #7C8886;
 }
 
-.star-body__text {
+.innistar-body__text {
     font-size: 1.4rem;
     color: #fff;
     line-height: 2rem;
@@ -371,4 +376,18 @@
     text-align: left;
     padding-bottom: 10px;
     padding-right: 4px;
+}
+
+.innistar-view-more {
+    display: inline-block;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 20px 8px 8px;
+    line-height: 1;
+}
+
+.innistar-view-more:hover {
+    text-decoration: underline;
 }

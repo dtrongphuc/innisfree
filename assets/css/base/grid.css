@@ -21,11 +21,6 @@
     margin-right: 0;
 }
 
-.row.big-gutters {
-    margin-left: -40px;
-    margin-right: -40px;
-}
-
 .col {
     padding-left: 4px;
     padding-right: 4px;
@@ -34,11 +29,6 @@
 .row.no-gutters .col {
     padding-left: 0;
     padding-right: 0;
-}
-
-.row.big-gutters .col {
-    padding-left: 40px;
-    padding-right: 40px;
 }
   
 .c-0 {
