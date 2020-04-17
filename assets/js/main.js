@@ -97,21 +97,6 @@ document.querySelectorAll('.slide-icon').forEach(icon => {
     });
 });
 
-// innistar
-
-// var wideWidth = document.querySelector('.grid.wide').offsetWidth;
-
-// var getWidth = wideWidth/5;
-// var listBox = document.querySelectorAll('.star-box');
-// function setWidth() {
-//     for(let i = 0 ; i < listBox.length ; ++i) {
-//         listBox[i].style.width = `${getWidth}px`;
-//         listBox[i].style.height = `${getWidth}px`;
-//     }
-// }
-
-// setWidth();
-
 var innistarListBg = [
     'https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/93244090_226708491914223_436196715629151101_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_cat=103&_nc_ohc=5nEAy9yjHI4AX-C6us9&oh=da9071917da47ade91fd1047b01fe4eb&oe=5EC11582',
     'https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/93521084_2279788825657853_1669851788923943449_n.jpg?_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_cat=105&_nc_ohc=4zhEuqq2b18AX_RjJI0&oh=201d4757e411431fffc544a77e728dbe&oe=5EC22207',
@@ -131,3 +116,7 @@ function renderBg() {
 }
 
 renderBg();
+
+function runInterval() {
+    
+}
