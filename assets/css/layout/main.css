@@ -420,11 +420,7 @@
     display: flex;
     align-items: center;
     overflow-x: auto;
-    width: 5000px;
     padding: 16px 0;
-    background-color: #FFDF00;
-    transform: translate3d(-200px, 0, 0);
-    transition: transform linear 10000ms;
 }
 
 .review-list::-webkit-scrollbar {
@@ -440,7 +436,6 @@
     margin: 0 25px;
     border: 1px solid rgb(231, 231, 231);
     cursor: pointer;
-    transition: border ease-in-out 200ms;
 }
 
 .review-item:hover {
@@ -504,4 +499,10 @@
     color: var(--primary-color);
     text-transform: uppercase;
     font-style: normal;
+}
+
+.slick-track {
+    width: 20000px;
+    transition: 0.1s;
+    transform: translateX(-360px);
 }

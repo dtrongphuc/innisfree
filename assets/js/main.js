@@ -116,7 +116,62 @@ function renderBg() {
 }
 
 renderBg();
+document.addEventListener('DOMContentLoaded', () => {
+    var slickList = document.querySelector('.slick-track');
+    var slickSlides = document.querySelectorAll('.slick-slide');
+    var count = 1;
+    var time = 11000;
+    var size = slickSlides[0].offsetWidth + 50;
+    var setTimeoutId;
 
-function runInterval() {
-    
-}
+    var hidden = "";
+    var visibilityChange = "";
+
+    if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support 
+        hidden = "hidden";
+        visibilityChange = "visibilitychange";
+    } else if (typeof document.msHidden !== "undefined") {
+        hidden = "msHidden";
+        visibilityChange = "msvisibilitychange";
+    } else if (typeof document.webkitHidden !== "undefined") {
+        hidden = "webkitHidden";
+        visibilityChange = "webkitvisibilitychange";
+    }
+
+    // If the page is hidden, pause the video;
+    // if the page is shown, play the video
+    function handleVisibilityChange() {
+        if (document[hidden]) {
+            clearTimeout(setTimeoutId);
+        } else {
+            runInterval();
+        }
+    }
+
+    document.addEventListener(visibilityChange, handleVisibilityChange, false);
+
+
+    function runInterval() {
+        // intervalId = setInterval(() => {
+        //     slickList.style.transition = "transform linear 500ms";
+        //     slickList.style.transform = `translate3d(${-size*(++count)}px, 0, 0)`;
+        // }, time);
+        slickList.style.transition = "transform linear 10000ms";
+        slickList.style.transform = `translate3d(${-size*(++count)}px, 0, 0)`;
+        setTimeoutId = setTimeout(runInterval, time);
+        // intervalId = setInterval(runInterval, time);
+    }
+
+    runInterval();
+
+    slickList.addEventListener('transitionend', () => {
+        let nameId = slickSlides[count].id;
+        if (nameId === 'firstClone') {
+            slickList.style.transition = "none";
+            count = 1;
+            slickList.style.transform = `translateX(${-size*count}px)`;
+        }
+    });
+
+
+}, false);
