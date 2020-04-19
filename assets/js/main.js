@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var slickList = document.querySelector('.slick-track');
     var slickSlides = document.querySelectorAll('.slick-slide');
     var count = 1;
-    var time = 10020;
+    var time = 10030;
     var size = slickSlides[0].offsetWidth + 50;
     var setTimeoutId;
     var intervalId;
@@ -160,8 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
         //     slickList.style.transition = "transform linear 500ms";
         //     slickList.style.transform = `translate3d(${-size*(++count)}px, 0, 0)`;
         // }, time);
+        slickSlides[count-1].classList.remove('slide-active');
         slickList.style.transition = "transform linear 10000ms";
         slickList.style.transform = `translate3d(${-size*(++count)}px, 0, 0)`;
+        slickSlides[count-1].classList.add('slide-active');
         setTimeoutId = setTimeout(runInterval, time);
         // intervalId = setInterval(runInterval, time);
     }
