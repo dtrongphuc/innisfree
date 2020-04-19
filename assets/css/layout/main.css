@@ -265,7 +265,7 @@
 
 .innis__tail {
     color: #222222;
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     line-height: 1;
     text-transform: uppercase;
 }
@@ -397,18 +397,18 @@
 .review {
     position: relative;
     padding-top: 200px;
-    padding-bottom: 200px;
 }
 
 .innis-head--cover { 
     position: relative;
+    display: inline-block;
     z-index: 10;
 }
 
 .review-main {
-    position: absolute;
+    position: relative;
     z-index: 1;
-    top: calc(150px + 90px);
+    top: -77px;
     right: 0;
     left: 0;
     padding: 150px 0;
@@ -508,6 +508,67 @@
 }
 
 /* Product */
-.product {
-    margin-top: 20px;
+.main-product {
+    padding-top: 200px;
+    padding-bottom: 200px;
+    background-color: #fff;
+}
+
+.main-product-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.main-product__left {
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+.left-product-item {
+    margin-top: 80px;
+    margin-right: 4%;
+    width: 45%;
+    max-width: 260px;
+}
+
+.left-product-item__bg {
+    width: 100%;
+    max-width: 260px;
+}
+
+.left-product-item__img {
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.product-item__link {
+    display: block;
+    position: relative;
+}
+
+.product-item__heading {
+    display: inline-block;
+    font-size: 1.8rem;
+    color: #000;
+    font-weight: 400;
+    padding-top: 10px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.main-product__right {
+    position: relative;
+    top: -20vh;
+    text-align: center;
+    width: 100%;
+}
+
+.right-product-item__img {
+    width: 100%;
 }
