@@ -120,9 +120,10 @@ document.addEventListener('DOMContentLoaded', () => {
     var slickList = document.querySelector('.slick-track');
     var slickSlides = document.querySelectorAll('.slick-slide');
     var count = 1;
-    var time = 11000;
+    var time = 10000;
     var size = slickSlides[0].offsetWidth + 50;
     var setTimeoutId;
+    var intervalId;
 
     var hidden = "";
     var visibilityChange = "";
@@ -137,12 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
         hidden = "webkitHidden";
         visibilityChange = "webkitvisibilitychange";
     }
-
-    // If the page is hidden, pause the video;
-    // if the page is shown, play the video
+    
     function handleVisibilityChange() {
+        console.log(document[hidden]);
         if (document[hidden]) {
             clearTimeout(setTimeoutId);
+            // clearInterval(intervalId);
         } else {
             runInterval();
         }
@@ -151,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener(visibilityChange, handleVisibilityChange, false);
 
 
+    runInterval();
     function runInterval() {
         // intervalId = setInterval(() => {
         //     slickList.style.transition = "transform linear 500ms";
@@ -162,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // intervalId = setInterval(runInterval, time);
     }
 
-    runInterval();
 
     slickList.addEventListener('transitionend', () => {
         let nameId = slickSlides[count].id;

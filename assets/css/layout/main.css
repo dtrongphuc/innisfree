@@ -506,3 +506,8 @@
     transition: 0.1s;
     transform: translateX(-360px);
 }
+
+/* Product */
+.product {
+    margin-top: 20px;
+}
