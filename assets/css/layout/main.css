@@ -510,7 +510,6 @@
 /* Product */
 .main-product {
     padding-top: 200px;
-    padding-bottom: 200px;
     background-color: #fff;
 }
 
@@ -586,4 +585,95 @@
     width: 100%;
     transform: scale(1);
     transition: transform ease 0.5s;
+}
+
+/* Ingredient */
+.main-ingredient {
+    background-color: #fff;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    width: 100%;
+}
+
+.ingredient-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.ingredient-control {
+
+}
+
+.ingredient-product {
+    position: absolute;
+    z-index: 10;
+    width: 575px;
+    height: 575px;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.ingredient-product__item {
+    width: 100%;
+    height: 100%;
+}
+
+.ingredient-product__heading {
+    margin-top: 80px;
+    font-family: 'Noto Sans', 'Noto Sans HK';
+    color: #000000;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    line-height: 1.6;
+    text-align: center;
+    user-select: none;
+}
+
+.ingredient-product__name {
+    margin-top: 10px;
+    color: var(--primary-color);
+    font-size: 3.8rem;
+    font-weight: 400;
+    line-height: 1.6;
+    text-align: center;
+    user-select: none;
+}
+
+.ingredient-product__link {
+    position: relative;
+    display: block;
+    top: 24px;
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+.ingredient-product__img {
+    width: 100%;
+}
+
+.ingredient-bg {
+    width: 100%;
+    height: 960px;
+}
+
+.ingredient-bg__item {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../images/bg_ingredient_greentea.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ingredient-selection {
+
+}
+
+.ingredient-selection__item {
+
 }
