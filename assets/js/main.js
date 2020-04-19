@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var slickList = document.querySelector('.slick-track');
     var slickSlides = document.querySelectorAll('.slick-slide');
     var count = 1;
-    var time = 10000;
+    var time = 10020;
     var size = slickSlides[0].offsetWidth + 50;
     var setTimeoutId;
     var intervalId;
@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleVisibilityChange() {
-        console.log(document[hidden]);
         if (document[hidden]) {
             clearTimeout(setTimeoutId);
             count--;
@@ -170,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     slickList.addEventListener('transitionend', () => {
         let nameId = slickSlides[count].id;
+        console.log(nameId);
         if (nameId === 'firstClone') {
             slickList.style.transition = "none";
             count = 1;
