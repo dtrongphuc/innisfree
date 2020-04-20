@@ -180,11 +180,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     var productItemWidth = document.querySelector('.left-product-item').offsetWidth;
     var productItemImg = document.querySelectorAll('.left-product-item__img');
+
     function setMarginItemImg() {
-        for(item of productItemImg) {
+        for (item of productItemImg) {
             item.style.marginTop = `-${ (productItemWidth/2) + 40 }px`;
         }
     }
     setMarginItemImg();
+    // 
+    function ingredientShow() {
+        let sliders = document.querySelectorAll('.slider-track');
+        let slidersSlide = sliders[0].querySelectorAll(':scope > .slider-slide');
+        let nextBtn = document.querySelector('.ctrl-right');
+        let prevBtn = document.querySelector('.ctrl-left');
+        let slideSize = slidersSlide[0].clientWidth;
+        let slideCount = 0;
+        let slideCurrent = 9;
 
+        nextBtn.addEventListener('click', () => {
+            console.log('next');
+            slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
+            sliders[0].style.transition = 'transform ease 500ms';
+            sliders[0].style.transform = `translate3d(${-slideSize * (++slideCount)}px, 0, 0)`;
+            slidersSlide[++slideCurrent].classList.add('slider-slide__selected');
+        });
+
+        prevBtn.addEventListener('click', () => {
+            console.log('prev');
+            slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
+            sliders[0].style.transition = 'transform ease 500ms';
+            sliders[0].style.transform = `translate3d(${-slideSize * (--slideCount)}px, 0, 0)`;
+            slidersSlide[--slideCurrent].classList.add('slider-slide__selected');
+        });
+
+    }
+    ingredientShow();
 }, false);
