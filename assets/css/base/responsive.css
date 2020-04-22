@@ -2,4 +2,7 @@
     .grid.wide {
         max-width: 1420px;
     }
+    .ingredient-selection-wrapper {
+        width: 64%;
+    }
 }

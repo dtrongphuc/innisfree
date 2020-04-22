@@ -193,38 +193,63 @@ document.addEventListener('DOMContentLoaded', () => {
         let slidersSlide = sliders[0].querySelectorAll(':scope > .slider-slide');
         let nextBtn = document.querySelector('.ctrl-right');
         let prevBtn = document.querySelector('.ctrl-left');
+        let isTransition = true;
         let slideSize = slidersSlide[0].clientWidth;
-        let slideCount = 0;
+        let slideCount = -4;
         let slideCurrent = 10;
-
+        
         nextBtn.addEventListener('click', () => {
             console.log('next');
             slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
+            isTransition = false;
             sliders[0].style.transition = 'transform ease 500ms';
             sliders[0].style.transform = `translate3d(${-slideSize * (++slideCount)}px, 0, 0)`;
             slidersSlide[++slideCurrent].classList.add('slider-slide__selected');
         });
 
+        nextBtn.addEventListener('click', (e) => {
+            if(isTransition) {
+                console.log('end');
+            }
+        });
+
         prevBtn.addEventListener('click', () => {
             console.log('prev');
             slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
+            isTransition = false;
             sliders[0].style.transition = 'transform ease 500ms';
             sliders[0].style.transform = `translate3d(${-slideSize * (--slideCount)}px, 0, 0)`;
             slidersSlide[--slideCurrent].classList.add('slider-slide__selected');
         });
 
         sliders[0].addEventListener('transitionend', () => {
-            let checkFirst = slidersSlide[slideCurrent].className.indexOf('slider-firstClone');
-            let checkLast = slidersSlide[slideCurrent].className.indexOf('slider-lastClone');
-            if( checkFirst !== -1 || checkLast !== -1 ) {
-                (checkFirst !== -1) ? slideCount = -4 : slideCount = 5;
+            isTransition = true;
+            let checkClone = slidersSlide[slideCurrent].className.indexOf('slider-clone');
+            if( checkClone !== -1 ) {
+                slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
+                (slideCurrent < 10) ? slideCurrent += 10 : slideCurrent-= 10;
+                (slideCurrent < 10) ? slideCount += 10 : slideCount -= 10;
                 sliders[0].style.transition = "none";
                 sliders[0].style.transform = `translate3d(${-slideSize * slideCount}px, 0, 0)`;
-                slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
-                (checkFirst !== -1) ? slideCurrent = 6: slideCurrent = 15;
                 slidersSlide[slideCurrent].classList.add('slider-slide__selected');
             }
         });
+
+        function onClickSlide() {
+            slidersSlide.forEach((slide, index) => {
+                slide.addEventListener('click', () => {
+                    slideCount += index - slideCurrent;
+                    slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
+                    isTransition = false;
+                    sliders[0].style.transition = 'transform ease 500ms';
+                    sliders[0].style.transform = `translate3d(${-slideSize * slideCount}px, 0, 0)`;
+                    slideCurrent = index;
+                    slidersSlide[slideCurrent].classList.add('slider-slide__selected');
+                });
+            });
+        }
+
+        onClickSlide();
     }
     ingredientShow();
 }, false);
