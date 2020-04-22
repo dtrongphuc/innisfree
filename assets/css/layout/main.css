@@ -673,17 +673,24 @@
 }
 
 .ingredient-bg {
+    display: flex;
     width: 100%;
     height: 960px;
 }
 
 .ingredient-bg__item {
+    flex-shrink: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../../images/bg_ingredient_greentea.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.ingredient-slide {
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 .ingredient-selection-wrapper {

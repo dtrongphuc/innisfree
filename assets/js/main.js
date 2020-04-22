@@ -188,6 +188,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     setMarginItemImg();
     // 
+
+    var ingredientBg = document.querySelectorAll('.ingredient-slide');
+
+    var bgLinksIngredient = [
+       // '/assets/images/bg_ingredient_forestformen.jpg',
+        '/assets/images/bg_ingredient_greentea.jpg',
+        '/assets/images/bg_ingredient_bija.jpg',
+        '/assets/images/bg_ingredient_seaweed.jpg',
+        '/assets/images/bg_ingredient_orchid.jpg',
+        '/assets/images/bg_ingredient_pomegranate.jpg',
+        '/assets/images/bg_ingredient_volcanic.jpg',
+        '/assets/images/bg_ingredient_soybean.jpg',
+        '/assets/images/bg_ingredient_tangerine.jpg',
+        '/assets/images/bg_ingredient_greenbarley.jpg',
+        '/assets/images/bg_ingredient_forestformen.jpg',
+        '/assets/images/bg_ingredient_greentea.jpg'
+    ]
+
+            
+    ingredientBg.forEach( (item, index) => {
+        item.style.backgroundImage = `url(${bgLinksIngredient[index]})`;
+    });
+
     function ingredientShow() {
         let sliders = document.querySelectorAll('.slider-track');
         let slidersSlide = sliders[0].querySelectorAll(':scope > .slider-slide');
@@ -195,23 +218,26 @@ document.addEventListener('DOMContentLoaded', () => {
         let prevBtn = document.querySelector('.ctrl-left');
         let isTransition = true;
         let slideSize = slidersSlide[0].clientWidth;
+        let bgSize = ingredientBg[0].clientWidth;
         let slideCount = -4;
         let slideCurrent = 10;
-        
+
         nextBtn.addEventListener('click', () => {
             console.log('next');
             slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
             isTransition = false;
             sliders[0].style.transition = 'transform ease 500ms';
             sliders[0].style.transform = `translate3d(${-slideSize * (++slideCount)}px, 0, 0)`;
+            ingredientBg[slideCurrent - 10].style.left = `-${bgSize * (slideCount + 4)}px`;
             slidersSlide[++slideCurrent].classList.add('slider-slide__selected');
+            ingredientBg[slideCurrent - 10].style.left = `-${bgSize * (slideCount + 4)}px`;
         });
 
-        nextBtn.addEventListener('click', (e) => {
-            if(isTransition) {
-                console.log('end');
-            }
-        });
+        // nextBtn.addEventListener('click', (e) => {
+        //     if(isTransition) {
+        //         console.log('end');
+        //     }
+        // });
 
         prevBtn.addEventListener('click', () => {
             console.log('prev');
@@ -219,6 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isTransition = false;
             sliders[0].style.transition = 'transform ease 500ms';
             sliders[0].style.transform = `translate3d(${-slideSize * (--slideCount)}px, 0, 0)`;
+            ingredientBg[slideCurrent - 10].style.left = `-${bgSize * (slideCount + 4)}px`;
             slidersSlide[--slideCurrent].classList.add('slider-slide__selected');
         });
 
@@ -227,14 +254,25 @@ document.addEventListener('DOMContentLoaded', () => {
             let checkClone = slidersSlide[slideCurrent].className.indexOf('slider-clone');
             if( checkClone !== -1 ) {
                 slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
-                (slideCurrent < 10) ? slideCurrent += 10 : slideCurrent-= 10;
-                (slideCurrent < 10) ? slideCount += 10 : slideCount -= 10;
+                if(slideCurrent < 10) {
+                    slideCurrent += 10;
+                    slideCount += 10;
+                } else {
+                    slideCurrent-= 10;
+                    slideCount -= 10;
+                }
                 sliders[0].style.transition = "none";
                 sliders[0].style.transform = `translate3d(${-slideSize * slideCount}px, 0, 0)`;
                 slidersSlide[slideCurrent].classList.add('slider-slide__selected');
             }
+            if(ingredientBg[slideCurrent - 10].id === 'ingredient-slide-first') {
+                ingredientBg.forEach( (item) => {
+                    item.style.left = 0;
+                })
+            }
         });
 
+        onClickSlide();
         function onClickSlide() {
             slidersSlide.forEach((slide, index) => {
                 slide.addEventListener('click', () => {
@@ -249,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        onClickSlide();
+
     }
     ingredientShow();
 }, false);
