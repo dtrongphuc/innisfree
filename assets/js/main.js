@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let prevBtn = document.querySelector('.ctrl-left');
         let slideSize = slidersSlide[0].clientWidth;
         let slideCount = 0;
-        let slideCurrent = 9;
+        let slideCurrent = 10;
 
         nextBtn.addEventListener('click', () => {
             console.log('next');
@@ -213,6 +213,18 @@ document.addEventListener('DOMContentLoaded', () => {
             slidersSlide[--slideCurrent].classList.add('slider-slide__selected');
         });
 
+        sliders[0].addEventListener('transitionend', () => {
+            let checkFirst = slidersSlide[slideCurrent].className.indexOf('slider-firstClone');
+            let checkLast = slidersSlide[slideCurrent].className.indexOf('slider-lastClone');
+            if( checkFirst !== -1 || checkLast !== -1 ) {
+                (checkFirst !== -1) ? slideCount = -4 : slideCount = 5;
+                sliders[0].style.transition = "none";
+                sliders[0].style.transform = `translate3d(${-slideSize * slideCount}px, 0, 0)`;
+                slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
+                (checkFirst !== -1) ? slideCurrent = 6: slideCurrent = 15;
+                slidersSlide[slideCurrent].classList.add('slider-slide__selected');
+            }
+        });
     }
     ingredientShow();
 }, false);
