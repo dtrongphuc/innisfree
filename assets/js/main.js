@@ -189,124 +189,157 @@ document.addEventListener('DOMContentLoaded', () => {
     setMarginItemImg();
     // 
 
-    var ingredientBg = document.querySelectorAll('.ingredient-slide');
-    var bgSize = ingredientBg[0].clientWidth;
-
-    var bgLinksIngredient = [
-        '/assets/images/bg_ingredient_greentea.jpg',
-        '/assets/images/bg_ingredient_bija.jpg',
-        '/assets/images/bg_ingredient_seaweed.jpg',
-        '/assets/images/bg_ingredient_orchid.jpg',
-        '/assets/images/bg_ingredient_pomegranate.jpg',
-        '/assets/images/bg_ingredient_volcanic.jpg',
-        '/assets/images/bg_ingredient_soybean.jpg',
-        '/assets/images/bg_ingredient_tangerine.jpg',
-        '/assets/images/bg_ingredient_greenbarley.jpg',
-        '/assets/images/bg_ingredient_forestformen.jpg',
-        '/assets/images/bg_ingredient_greentea.jpg'
-    ]
-
-
-    ingredientBg.forEach((item, index) => {
-        item.style.backgroundImage = `url(${bgLinksIngredient[index]})`;
-        item.style.position = 'relative';
-        item.style.zIndex = 97;
-        item.style.opacity = 0;
-        item.style.left = `-${bgSize* index}px`;
-        item.style.transition = `opacity 500ms ease`;
-    });
-
-    ingredientBg[0].style.zIndex = 98;
-    ingredientBg[0].style.opacity = 1;
 
     function ingredientShow() {
-        let sliders = document.querySelectorAll('.slider-track');
-        let slidersSlide = sliders[0].querySelectorAll(':scope > .slider-slide');
-        let nextBtn = document.querySelector('.ctrl-right');
-        let prevBtn = document.querySelector('.ctrl-left');
-        let isTransition = true;
-        let slideSize = slidersSlide[0].clientWidth;
-        let slideCount = -4;
-        let slideCurrent = 10;
+        var sliders = document.querySelectorAll('.slider-track');
+        var productSlides = sliders[0].querySelectorAll(':scope > .slider-slide'); //product slides
+        var selectionSlides = sliders[1].querySelectorAll(':scope > .slider-slide'); //selection slides
+        var nextBtn = document.querySelector('.ctrl-right');
+        var prevBtn = document.querySelector('.ctrl-left');
+        var isTransition = true;
+        
+        var selectionSize = selectionSlides[0].clientWidth;
+        var selectionSlideCount = 4;
+        var selectionSlideCurrent = 6;
+        
+        var productSize = productSlides[0].clientWidth;
+        var productSlideCount = 1;
+        var productSlideCurrent = 1;
 
+
+        var ingredientBg = document.querySelectorAll('.ingredient-slide');
+        var bgSize = ingredientBg[0].clientWidth;
+
+        var bgLinksIngredient = [
+            '/assets/images/bg_ingredient_greentea.jpg',
+            '/assets/images/bg_ingredient_bija.jpg',
+            '/assets/images/bg_ingredient_seaweed.jpg',
+            '/assets/images/bg_ingredient_orchid.jpg',
+            '/assets/images/bg_ingredient_pomegranate.jpg',
+            '/assets/images/bg_ingredient_volcanic.jpg',
+            '/assets/images/bg_ingredient_soybean.jpg',
+            '/assets/images/bg_ingredient_tangerine.jpg',
+            '/assets/images/bg_ingredient_greenbarley.jpg',
+            '/assets/images/bg_ingredient_forestformen.jpg',
+            '/assets/images/bg_ingredient_greentea.jpg'
+        ]
+
+
+        ingredientBg.forEach((item, index) => {
+            item.style.backgroundImage = `url(${bgLinksIngredient[index]})`;
+            item.style.position = 'relative';
+            item.style.zIndex = 97;
+            item.style.opacity = 0;
+            item.style.left = `-${bgSize* index}px`;
+            item.style.transition = `opacity 500ms ease`;
+        });
+
+        ingredientBg[0].style.zIndex = 98;
+        ingredientBg[0].style.opacity = 1;
 
         nextBtn.addEventListener('click', () => {
             console.log('next');
-            slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
             isTransition = false;
+            selectionSlides[selectionSlideCurrent].classList.remove('slider-slide--selected');
+            productSlides[productSlideCurrent].classList.remove('slider-slide--current');
             sliders[0].style.transition = 'transform ease 500ms';
-            sliders[0].style.transform = `translate3d(${-slideSize * (++slideCount)}px, 0, 0)`;
-            ingredientBg[slideCurrent - 10].style.zIndex = 97;
-            ingredientBg[slideCurrent - 10].style.opacity = 0;
-            slidersSlide[++slideCurrent].classList.add('slider-slide__selected');
+            sliders[0].style.transform = `translate3d(${-productSize * (++productSlideCount)}px, 0, 0)`;
+
+            sliders[1].style.transition = 'transform ease 500ms';
+            sliders[1].style.transform = `translate3d(${-selectionSize * (++selectionSlideCount)}px, 0, 0)`;
+            ingredientBg[selectionSlideCurrent - 6].style.zIndex = 97;
+            ingredientBg[selectionSlideCurrent - 6].style.opacity = 0;
+            selectionSlides[++selectionSlideCurrent].classList.add('slider-slide--selected');
+            productSlides[++productSlideCurrent].classList.add('slider-slide--current');
             sliderBg();
         });
 
-        // nextBtn.addEventListener('click', (e) => {
-        //     if(isTransition) {
-        //         console.log('end');
-        //     }
-        // });
+        nextBtn.addEventListener('click', (e) => {
+            if(!isTransition) {
+                console.log('click');
+                e.preventDefault();
+            }
+        });
 
         prevBtn.addEventListener('click', () => {
             console.log('prev');
-            slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
             isTransition = false;
+            selectionSlides[selectionSlideCurrent].classList.remove('slider-slide--selected');
+            productSlides[productSlideCurrent].classList.remove('slider-slide--current');
             sliders[0].style.transition = 'transform ease 500ms';
-            sliders[0].style.transform = `translate3d(${-slideSize * (--slideCount)}px, 0, 0)`;
-            ingredientBg[slideCurrent - 10].style.zIndex = 97;
-            ingredientBg[slideCurrent - 10].style.opacity = 0;
-            slidersSlide[--slideCurrent].classList.add('slider-slide__selected');
+            sliders[0].style.transform = `translate3d(${-productSize * (--productSlideCount)}px, 0, 0)`;
+
+            sliders[1].style.transition = 'transform ease 500ms';
+            sliders[1].style.transform = `translate3d(${-selectionSize * (--selectionSlideCount)}px, 0, 0)`;
+            ingredientBg[selectionSlideCurrent - 6].style.zIndex = 97;
+            ingredientBg[selectionSlideCurrent - 6].style.opacity = 0;
+            selectionSlides[--selectionSlideCurrent].classList.add('slider-slide--selected');
+            productSlides[--productSlideCurrent].classList.add('slider-slide--current');
             sliderBg();
 
         });
 
         function sliderBg() {
-            if ((slideCurrent - 10) >= 10) {
+            if ((selectionSlideCurrent - 6) >= 10) {
                 ingredientBg[0].style.zIndex = 98;
                 ingredientBg[0].style.opacity = 1;
-            }
-            else if ((slideCurrent - 10) < 0) {
+            } else if ((selectionSlideCurrent - 6) < 0) {
                 ingredientBg[ingredientBg.length - 1].style.zIndex = 98;
                 ingredientBg[ingredientBg.length - 1].style.opacity = 1;
             } else {
-                ingredientBg[slideCurrent - 10].style.zIndex = 98;
-                ingredientBg[slideCurrent - 10].style.opacity = 1;
+                ingredientBg[selectionSlideCurrent - 6].style.zIndex = 98;
+                ingredientBg[selectionSlideCurrent - 6].style.opacity = 1;
             }
         }
 
-        sliders[0].addEventListener('transitionend', () => {
+        sliders[1].addEventListener('transitionend', () => {
+            console.log('transition end');
             isTransition = true;
-            let checkClone = slidersSlide[slideCurrent].className.indexOf('slider-clone');
+            let checkClone = selectionSlides[selectionSlideCurrent].className.indexOf('slider-clone');
             if (checkClone !== -1) {
-                slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
-                if (slideCurrent < 10) {
-                    slideCurrent += 10;
-                    slideCount += 10;
+                selectionSlides[selectionSlideCurrent].classList.remove('slider-slide--selected');
+                productSlides[productSlideCurrent].classList.remove('slider-slide--current');
+                if (selectionSlideCurrent < 6) {
+                    selectionSlideCurrent += 10;
+                    selectionSlideCount += 10;
+                    productSlideCurrent += 10;
+                    productSlideCount += 10;
                 } else {
-                    slideCurrent -= 10;
-                    slideCount -= 10;
+                    selectionSlideCurrent -= 10;
+                    selectionSlideCount -= 10;
+                    productSlideCurrent -= 10;
+                    productSlideCount -= 10;
                 }
                 sliders[0].style.transition = "none";
-                sliders[0].style.transform = `translate3d(${-slideSize * slideCount}px, 0, 0)`;
-                slidersSlide[slideCurrent].classList.add('slider-slide__selected');
+                sliders[0].style.transform = `translate3d(${-productSize * productSlideCount}px, 0, 0)`;
+
+                sliders[1].style.transition = "none";
+                sliders[1].style.transform = `translate3d(${-selectionSize * selectionSlideCount}px, 0, 0)`;
+                selectionSlides[selectionSlideCurrent].classList.add('slider-slide--selected');
+                productSlides[productSlideCurrent].classList.add('slider-slide--current');
             }
         });
 
         onClickSlide();
 
         function onClickSlide() {
-            slidersSlide.forEach((slide, index) => {
+            selectionSlides.forEach((slide, index) => {
                 slide.addEventListener('click', () => {
-                    slideCount += index - slideCurrent;
-                    slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
-                    ingredientBg[slideCurrent - 10].style.zIndex = 97;
-                    ingredientBg[slideCurrent - 10].style.opacity = 0;
                     isTransition = false;
-                    sliders[0].style.transition = 'transform ease 500ms';
-                    sliders[0].style.transform = `translate3d(${-slideSize * slideCount}px, 0, 0)`;
-                    slideCurrent = index;
-                    slidersSlide[slideCurrent].classList.add('slider-slide__selected');
+                    selectionSlideCount += index - selectionSlideCurrent;
+                    productSlideCount += index - selectionSlideCurrent;
+                    selectionSlides[selectionSlideCurrent].classList.remove('slider-slide--selected');
+                    productSlides[productSlideCurrent].classList.remove('slider-slide--current');
+                    ingredientBg[selectionSlideCurrent - 6].style.zIndex = 97;
+                    ingredientBg[selectionSlideCurrent - 6].style.opacity = 0;
+                    sliders[0].style.transition = `transform ease 500ms`;
+                    sliders[0].style.transform = `translate3d(${-productSize * productSlideCount}px, 0, 0)`;
+                    sliders[1].style.transition = 'transform ease 500ms';
+                    sliders[1].style.transform = `translate3d(${-selectionSize * selectionSlideCount}px, 0, 0)`;
+                    selectionSlideCurrent = index;
+                    productSlideCurrent = productSlideCount;
+                    selectionSlides[selectionSlideCurrent].classList.add('slider-slide--selected');
+                    productSlides[productSlideCurrent].classList.add('slider-slide--current');
                     sliderBg();
                 });
             });

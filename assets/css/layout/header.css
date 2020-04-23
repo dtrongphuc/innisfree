@@ -5,7 +5,7 @@
     top: 0;
     right: 0;
     left: 0;
-    z-index: 999;
+    z-index: 997;
     height: 70px;
     background-color: white;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
@@ -53,6 +53,7 @@
     display: none;
     content: "";
     position: absolute;
+    z-index: 999;
     bottom: 0;
     width: 100%;
     border-bottom: 2px solid var(--primary-color);
@@ -109,7 +110,7 @@
     display: none;
     /* display: flex; */
     position: absolute;
-    z-index: 9999;
+    z-index: 998;
     top: 97%;
     left: -88%;
     background-color: white;
