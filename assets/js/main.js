@@ -190,9 +190,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 
 
     var ingredientBg = document.querySelectorAll('.ingredient-slide');
+    var bgSize = ingredientBg[0].clientWidth;
 
     var bgLinksIngredient = [
-       // '/assets/images/bg_ingredient_forestformen.jpg',
         '/assets/images/bg_ingredient_greentea.jpg',
         '/assets/images/bg_ingredient_bija.jpg',
         '/assets/images/bg_ingredient_seaweed.jpg',
@@ -206,10 +206,18 @@ document.addEventListener('DOMContentLoaded', () => {
         '/assets/images/bg_ingredient_greentea.jpg'
     ]
 
-            
-    ingredientBg.forEach( (item, index) => {
+
+    ingredientBg.forEach((item, index) => {
         item.style.backgroundImage = `url(${bgLinksIngredient[index]})`;
+        item.style.position = 'relative';
+        item.style.zIndex = 97;
+        item.style.opacity = 0;
+        item.style.left = `-${bgSize* index}px`;
+        item.style.transition = `opacity 500ms ease`;
     });
+
+    ingredientBg[0].style.zIndex = 98;
+    ingredientBg[0].style.opacity = 1;
 
     function ingredientShow() {
         let sliders = document.querySelectorAll('.slider-track');
@@ -218,9 +226,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let prevBtn = document.querySelector('.ctrl-left');
         let isTransition = true;
         let slideSize = slidersSlide[0].clientWidth;
-        let bgSize = ingredientBg[0].clientWidth;
         let slideCount = -4;
         let slideCurrent = 10;
+
 
         nextBtn.addEventListener('click', () => {
             console.log('next');
@@ -228,9 +236,10 @@ document.addEventListener('DOMContentLoaded', () => {
             isTransition = false;
             sliders[0].style.transition = 'transform ease 500ms';
             sliders[0].style.transform = `translate3d(${-slideSize * (++slideCount)}px, 0, 0)`;
-            ingredientBg[slideCurrent - 10].style.left = `-${bgSize * (slideCount + 4)}px`;
+            ingredientBg[slideCurrent - 10].style.zIndex = 97;
+            ingredientBg[slideCurrent - 10].style.opacity = 0;
             slidersSlide[++slideCurrent].classList.add('slider-slide__selected');
-            ingredientBg[slideCurrent - 10].style.left = `-${bgSize * (slideCount + 4)}px`;
+            sliderBg();
         });
 
         // nextBtn.addEventListener('click', (e) => {
@@ -245,44 +254,60 @@ document.addEventListener('DOMContentLoaded', () => {
             isTransition = false;
             sliders[0].style.transition = 'transform ease 500ms';
             sliders[0].style.transform = `translate3d(${-slideSize * (--slideCount)}px, 0, 0)`;
-            ingredientBg[slideCurrent - 10].style.left = `-${bgSize * (slideCount + 4)}px`;
+            ingredientBg[slideCurrent - 10].style.zIndex = 97;
+            ingredientBg[slideCurrent - 10].style.opacity = 0;
             slidersSlide[--slideCurrent].classList.add('slider-slide__selected');
+            sliderBg();
+
         });
+
+        function sliderBg() {
+            if ((slideCurrent - 10) >= 10) {
+                ingredientBg[0].style.zIndex = 98;
+                ingredientBg[0].style.opacity = 1;
+            }
+            else if ((slideCurrent - 10) < 0) {
+                ingredientBg[ingredientBg.length - 1].style.zIndex = 98;
+                ingredientBg[ingredientBg.length - 1].style.opacity = 1;
+            } else {
+                ingredientBg[slideCurrent - 10].style.zIndex = 98;
+                ingredientBg[slideCurrent - 10].style.opacity = 1;
+            }
+        }
 
         sliders[0].addEventListener('transitionend', () => {
             isTransition = true;
             let checkClone = slidersSlide[slideCurrent].className.indexOf('slider-clone');
-            if( checkClone !== -1 ) {
+            if (checkClone !== -1) {
                 slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
-                if(slideCurrent < 10) {
+                if (slideCurrent < 10) {
                     slideCurrent += 10;
                     slideCount += 10;
                 } else {
-                    slideCurrent-= 10;
+                    slideCurrent -= 10;
                     slideCount -= 10;
                 }
                 sliders[0].style.transition = "none";
                 sliders[0].style.transform = `translate3d(${-slideSize * slideCount}px, 0, 0)`;
                 slidersSlide[slideCurrent].classList.add('slider-slide__selected');
             }
-            if(ingredientBg[slideCurrent - 10].id === 'ingredient-slide-first') {
-                ingredientBg.forEach( (item) => {
-                    item.style.left = 0;
-                })
-            }
         });
 
         onClickSlide();
+
         function onClickSlide() {
             slidersSlide.forEach((slide, index) => {
                 slide.addEventListener('click', () => {
                     slideCount += index - slideCurrent;
                     slidersSlide[slideCurrent].classList.remove('slider-slide__selected');
+                    ingredientBg[slideCurrent - 10].style.zIndex = 97;
+                    ingredientBg[slideCurrent - 10].style.opacity = 0;
                     isTransition = false;
                     sliders[0].style.transition = 'transform ease 500ms';
                     sliders[0].style.transform = `translate3d(${-slideSize * slideCount}px, 0, 0)`;
                     slideCurrent = index;
                     slidersSlide[slideCurrent].classList.add('slider-slide__selected');
+                    sliderBg();
                 });
             });
         }
