@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
         var selectionSlides = sliders[1].querySelectorAll(':scope > .slider-slide'); //selection slides
         var nextBtn = document.querySelector('.ctrl-right');
         var prevBtn = document.querySelector('.ctrl-left');
-        var isTransition = true;
+        var isTransitionEnd = true;
         
         var selectionSize = selectionSlides[0].clientWidth;
         var selectionSlideCount = 4;
@@ -237,9 +237,16 @@ document.addEventListener('DOMContentLoaded', () => {
         ingredientBg[0].style.zIndex = 98;
         ingredientBg[0].style.opacity = 1;
 
+        // nextBtn.addEventListener('click', (e) => {
+        //     if(!isTransitionEnd) {
+        //         console.log('click click click');
+        //         e.preventDefault();
+        //     }
+        // });
+
         nextBtn.addEventListener('click', () => {
             console.log('next');
-            isTransition = false;
+            isTransitionEnd = false;
             selectionSlides[selectionSlideCurrent].classList.remove('slider-slide--selected');
             productSlides[productSlideCurrent].classList.remove('slider-slide--current');
             sliders[0].style.transition = 'transform ease 500ms';
@@ -254,16 +261,9 @@ document.addEventListener('DOMContentLoaded', () => {
             sliderBg();
         });
 
-        nextBtn.addEventListener('click', (e) => {
-            if(!isTransition) {
-                console.log('click');
-                e.preventDefault();
-            }
-        });
-
         prevBtn.addEventListener('click', () => {
             console.log('prev');
-            isTransition = false;
+            isTransitionEnd = false;
             selectionSlides[selectionSlideCurrent].classList.remove('slider-slide--selected');
             productSlides[productSlideCurrent].classList.remove('slider-slide--current');
             sliders[0].style.transition = 'transform ease 500ms';
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sliders[1].addEventListener('transitionend', () => {
             console.log('transition end');
-            isTransition = true;
+            isTransitionEnd = true;
             let checkClone = selectionSlides[selectionSlideCurrent].className.indexOf('slider-clone');
             if (checkClone !== -1) {
                 selectionSlides[selectionSlideCurrent].classList.remove('slider-slide--selected');
@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function onClickSlide() {
             selectionSlides.forEach((slide, index) => {
                 slide.addEventListener('click', () => {
-                    isTransition = false;
+                    isTransitionEnd = false;
                     selectionSlideCount += index - selectionSlideCurrent;
                     productSlideCount += index - selectionSlideCurrent;
                     selectionSlides[selectionSlideCurrent].classList.remove('slider-slide--selected');
