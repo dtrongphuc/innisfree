@@ -350,4 +350,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
     ingredientShow();
+
+
 }, false);
