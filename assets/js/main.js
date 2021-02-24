@@ -213,17 +213,17 @@ document.addEventListener('DOMContentLoaded', () => {
         var bgSize = ingredientBg[0].clientWidth;
 
         var bgLinksIngredient = [
-            '/assets/images/bg_ingredient_greentea.jpg',
-            '/assets/images/bg_ingredient_bija.jpg',
-            '/assets/images/bg_ingredient_seaweed.jpg',
-            '/assets/images/bg_ingredient_orchid.jpg',
-            '/assets/images/bg_ingredient_pomegranate.jpg',
-            '/assets/images/bg_ingredient_volcanic.jpg',
-            '/assets/images/bg_ingredient_soybean.jpg',
-            '/assets/images/bg_ingredient_tangerine.jpg',
-            '/assets/images/bg_ingredient_greenbarley.jpg',
-            '/assets/images/bg_ingredient_forestformen.jpg',
-            '/assets/images/bg_ingredient_greentea.jpg'
+            './assets/images/bg_ingredient_greentea.jpg',
+            './assets/images/bg_ingredient_bija.jpg',
+            './assets/images/bg_ingredient_seaweed.jpg',
+            './assets/images/bg_ingredient_orchid.jpg',
+            './assets/images/bg_ingredient_pomegranate.jpg',
+            './assets/images/bg_ingredient_volcanic.jpg',
+            './assets/images/bg_ingredient_soybean.jpg',
+            './assets/images/bg_ingredient_tangerine.jpg',
+            './assets/images/bg_ingredient_greenbarley.jpg',
+            './assets/images/bg_ingredient_forestformen.jpg',
+            './assets/images/bg_ingredient_greentea.jpg'
         ]
 
 
